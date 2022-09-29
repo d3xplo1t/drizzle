@@ -7,9 +7,9 @@ import time
 #PIN4 = HUMIDITY SENSOR
 #PIN11 = RELAY
 
-gp.setmode(GPIO.BCM)
-gp.setup(4, GPIO.OUT) #humidity sensor
-gp.setup(11, GPIO.OUT) #relay
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(4, GPIO.OUT) #humidity sensor
+GPIO.setup(11, GPIO.OUT) #relay
 
 
 try:
