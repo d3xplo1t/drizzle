@@ -1,32 +1,21 @@
 #Drizzle v0.1 09/2022
 
-import RPi.GPIO as GPIO
+import RPi.GPIO as gp
 import time
 
 #Setting pins.
-#PIN4 = HUMIDITY SENSOR
-#PIN11 = RELAY
+#PIN11(GPIO017) = RELAY
 
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(4, GPIO.OUT) #humidity sensor
-GPIO.setup(11, GPIO.OUT) #relay
+time.sleep(10)
 
-
-try:
-    while True:
-        if (GPIO.input(4))==0:
-            print("Wet")
-        elif (GPIO.input(4))==1:
-            print("Dry") and gp.output(11, GPIO.HIGH)
-            time.sleep(2)
-            print("Drizzle time!!")
-            GPIO.cleanup()
-        time.sleep(3600)
-
-#clean the GPIO pins before endings
-
-finally:
-    GPIO.cleanup()
-
-
+while (True):
+    gp.setmode(gp.BOARD)
+    gp.setup(11, gp.OUT)
+    print("Drizzle time, pump activated!")
+    time.sleep(2)
+    gp.cleanup()
+    #live terminal countdown
+    for i in range(80000,0,-1):
+        print(f"{i}", end="\r", flush=True)
+        time.sleep(1)
 
